@@ -1,0 +1,903 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Dill Aur Chill, Disc 01: Sunlight to Starlight. A 197-track Desi-meets-global record for two."><style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Dill Aur Chill</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a record sleeve. Front cover hero with a spinning disc, liner notes, a Side A / Side B tracklisting, then the working library. */
+:root{
+  --bg:#f7eef1;          /* rose paper */
+  --surface:#fffafb;
+  --ink:#2a1324;         /* aubergine ink */
+  --muted:#77586c;
+  --line:#e6d3da;
+  --accent:#a65400;      /* marigold, deepened for paper */
+  --accent-ink:#fff7ec;
+  --gem:#0b6f6c;         /* peacock teal */
+  --gem-soft:#d9efed;
+  --forgot:#8a3a12;
+  --forgot-soft:#f6e3d3;
+  --vinyl:#1d1219;
+  --groove:#33232e;
+  --danger:#a3122f;
+  --f-display:"Rozha One","Bodoni 72","Didot",Georgia,serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#190e1b;--surface:#23152a;--ink:#f5e7ec;--muted:#b89cb0;--line:#3b2641;
+  --accent:#f2a93b;--accent-ink:#2a1324;--gem:#5fc8bf;--gem-soft:#123634;--forgot:#f0b98d;--forgot-soft:#3a2219;
+  --vinyl:#0c070d;--groove:#20141f;--danger:#ff6b86;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#190e1b;--surface:#23152a;--ink:#f5e7ec;--muted:#b89cb0;--line:#3b2641;
+  --accent:#f2a93b;--accent-ink:#2a1324;--gem:#5fc8bf;--gem-soft:#123634;--forgot:#f0b98d;--forgot-soft:#3a2219;
+  --vinyl:#0c070d;--groove:#20141f;--danger:#ff6b86;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.02}
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.45rem .9rem;cursor:pointer;font-size:.88rem;font-weight:500;display:inline-flex;align-items:center;gap:.4rem}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.danger{color:var(--danger)}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* ---------- Cover ---------- */
+.cover{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(28px,6vw,72px) clamp(24px,4vw,48px)}
+.catalog{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;color:var(--muted)}
+.title{font-size:clamp(3.6rem,11vw,8.6rem);letter-spacing:-.01em;margin-block:.35em .1em}
+.title span{display:block}
+.title .aur{font-size:.42em;color:var(--accent);letter-spacing:.02em;margin-block:.12em}
+.deva{font-family:var(--f-display);font-size:clamp(1.3rem,3vw,1.9rem);color:var(--muted);margin:0}
+.sub{font-size:clamp(1.05rem,2vw,1.25rem);max-width:34ch;margin:.9rem 0 1.4rem}
+.cover-actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.count-big{font-family:var(--f-mono);font-size:.85rem;color:var(--muted)}
+.count-big b{font-family:var(--f-display);font-weight:400;font-size:1.9rem;color:var(--ink);letter-spacing:0;margin-right:.25rem;vertical-align:-.12em}
+
+.turntable{position:relative;display:grid;place-items:center}
+.disc{width:min(100%,380px);max-width:100%;aspect-ratio:1;border-radius:50%;position:relative;
+  background:
+   radial-gradient(circle at 50% 50%,transparent 0 31%,var(--vinyl) 31% 33%,transparent 33%),
+   repeating-radial-gradient(circle at 50% 50%,var(--vinyl) 0 2px,var(--groove) 2px 3px);
+  box-shadow:0 18px 40px -18px rgba(20,8,18,.55);animation:spin 1.8s linear infinite}
+.disc::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 10%,rgba(255,255,255,.07) 14%,transparent 20% 60%,rgba(255,255,255,.05) 64%,transparent 70%)}
+.label{position:absolute;inset:33%;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;text-align:center;padding:8%}
+.label .l1{font-family:var(--f-display);font-size:clamp(.8rem,2.2vw,1.15rem);line-height:1}
+.label .l2{font-family:var(--f-mono);font-size:clamp(.5rem,1.2vw,.62rem);letter-spacing:.12em;margin-top:.3em}
+.label::after{content:"";position:absolute;width:7%;aspect-ratio:1;border-radius:50%;background:var(--bg)}
+.disc.paused{animation-play-state:paused}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.disc{animation:none}}
+.rpm{margin-top:.8rem;display:flex;gap:.6rem;align-items:center;color:var(--muted)}
+
+/* ---------- Liner notes ---------- */
+.liner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);border-top:1px solid var(--ink);padding-block:28px}
+.liner h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.6rem}
+.liner p{margin:.0 0 .9rem;max-width:62ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;align-self:start}
+.fact{background:var(--surface);padding:14px 16px}
+.fact b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.7rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.fact span{color:var(--muted);font-size:.85rem}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin-top:.4rem;font-size:.88rem;color:var(--muted)}
+
+/* ---------- Tracklisting (TOC) ---------- */
+.toc{border-top:1px solid var(--ink);padding-block:28px}
+.toc-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:14px}
+.toc-head h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.sides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,40px)}
+.side h3{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.side ol{list-style:none;margin:0;padding:0}
+.side li a{display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto;gap:.6rem;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.side li a:hover .cn{color:var(--accent)}
+.side .no{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.side .cn{font-family:var(--f-display);font-size:1.35rem;line-height:1.1}
+.side .cb{display:block;font-size:.86rem;color:var(--muted);margin-top:2px}
+.side .cc{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* ---------- Toolbar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding-block:12px}
+.bar-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.search{flex:1 1 240px;min-width:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.4rem .9rem}
+.search input{border:0;background:transparent;outline:none;width:100%;min-width:0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.filters select{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.35rem .7rem;font-size:.86rem;max-width:100%}
+.shown{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);margin-left:auto}
+@media (max-width:700px){.filters[data-collapsed="true"]{display:none}}
+@media (min-width:701px){#filterToggle{display:none}}
+
+/* ---------- Library ---------- */
+.chapter{padding-block:28px 8px;scroll-margin-top:150px}
+.ch-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px;align-items:end;margin-bottom:10px}
+.ch-num{font-family:var(--f-display);font-size:clamp(3rem,7vw,4.6rem);line-height:.8;color:var(--accent);grid-row:span 2}
+.ch-head h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.ch-blurb{color:var(--muted);max-width:66ch;margin:0;font-size:.95rem}
+.tracks{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.track{display:grid;grid-template-columns:2.6rem minmax(0,1fr) auto;gap:4px 14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.track .pos{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);padding-top:.25rem;font-variant-numeric:tabular-nums}
+.t-title{font-weight:600;font-size:1.06rem;line-height:1.3}
+.t-artist{color:var(--muted)}
+.t-meta{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;margin-top:6px;font-size:.82rem;color:var(--muted)}
+.t-meta .dot::before{content:"·";margin-right:10px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:.76rem;color:var(--ink)}
+.kind{border-radius:3px;padding:1px 7px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+.kind.F{border:1px solid var(--line);color:var(--muted)}
+.kind.O{background:var(--forgot-soft);color:var(--forgot)}
+.kind.G{background:var(--gem-soft);color:var(--gem)}
+.kind.M{background:var(--ink);color:var(--bg)}
+.flag{font-size:.76rem;color:var(--danger)}
+.t-note{font-style:italic;font-size:.9rem;margin:6px 0 0;max-width:70ch}
+.t-actions{display:flex;gap:6px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.icon{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:inline-grid;place-items:center;cursor:pointer;font-size:1rem;line-height:1}
+.icon:hover{border-color:var(--ink)}
+.icon[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+.icon:disabled{opacity:.35;cursor:default}
+.yt{text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:.38rem .8rem;font-size:.84rem;font-weight:600;white-space:nowrap}
+.yt:hover{background:var(--ink);color:var(--bg)}
+details.more{grid-column:2 / -1;margin-top:2px}
+details.more summary{cursor:pointer;font-size:.82rem;color:var(--muted);list-style:none;display:inline-flex;gap:.3rem}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";font-family:var(--f-mono)}
+details.more[open] summary::before{content:"−"}
+.more-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px;margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-size:.78rem;color:var(--muted)}
+.field input,.field select,.field textarea{border:1px solid var(--line);background:var(--bg);border-radius:4px;padding:.45rem .6rem;width:100%;min-width:0}
+.field textarea{min-height:64px;resize:vertical}
+.more-row{display:flex;gap:8px;flex-wrap:wrap;align-items:end}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+
+/* ---------- Studio (manage) ---------- */
+.studio{border-top:1px solid var(--ink);padding-block:32px;margin-top:24px}
+.studio h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.3rem}
+.studio > p{color:var(--muted);margin:0 0 18px;max-width:62ch}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.panel{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.panel h3{font-family:var(--f-body);font-weight:700;font-size:1rem}
+.panel p{margin:0;color:var(--muted);font-size:.9rem}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.panel textarea{font-family:var(--f-mono);font-size:.75rem;min-height:120px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:.85rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:999px;font-size:.9rem;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s;max-width:calc(100% - 32px)}
+.toast.on{opacity:1}
+
+/* ---------- Sky band: a single world per sky, independent of light/dark theme ---------- */
+.sky{position:relative;overflow:hidden;isolation:isolate;
+  margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  --sky-top:#f7dcae;--sky-mid:#f2c39b;--sky-bot:#eeb8a8;--sky-ink:#35190f;--sky-muted:#6c4636;--sky-accent:#a8420c;--sky-label:#fff4e6;--sky-glass:rgba(255,246,236,.42);--sky-edge:rgba(53,25,15,.18);
+  background:linear-gradient(180deg,var(--sky-top),var(--sky-mid) 55%,var(--sky-bot));color:var(--sky-ink);transition:color .8s ease}
+.sky[data-sky="rain"]{--sky-top:#7f8d9b;--sky-mid:#a3adb7;--sky-bot:#c8cdd2;--sky-ink:#16212a;--sky-muted:#3c4a55;--sky-accent:#24546b;--sky-label:#eef5f8;--sky-glass:rgba(236,242,246,.38);--sky-edge:rgba(22,33,42,.2)}
+.sky[data-sky="moon"]{--sky-top:#0c1636;--sky-mid:#1b2654;--sky-bot:#33407a;--sky-ink:#eef0ff;--sky-muted:#b9c0e6;--sky-accent:#e8d6a0;--sky-label:#1b1a2e;--sky-glass:rgba(20,28,66,.45);--sky-edge:rgba(238,240,255,.2)}
+.sky[data-sky="stars"]{--sky-top:#04050d;--sky-mid:#0f0c26;--sky-bot:#241a48;--sky-ink:#f3edff;--sky-muted:#b8abd8;--sky-accent:#f2a93b;--sky-label:#22122a;--sky-glass:rgba(16,12,40,.5);--sky-edge:rgba(243,237,255,.18)}
+.sky[data-sky="night"]{--sky-top:#060a20;--sky-mid:#141640;--sky-bot:#2a1f55;--sky-ink:#f0eeff;--sky-muted:#bab3dd;--sky-accent:#e8d6a0;--sky-label:#1b1a2e;--sky-glass:rgba(16,16,48,.5);--sky-edge:rgba(240,238,255,.18)}
+#skyCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
+.sky-inner{max-width:1152px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 28px}
+.sky .catalog,.sky .deva,.sky .count-big,.sky .rpm{color:var(--sky-muted)}
+.sky .count-big b{color:var(--sky-ink)}
+.sky .title .aur{color:var(--sky-accent)}
+.sky .label{background:var(--sky-accent);color:var(--sky-label);transition:background .8s ease}
+.sky .label::after{background:var(--sky-mid)}
+.sky .btn{background:var(--sky-glass);border-color:var(--sky-edge);color:var(--sky-ink);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.sky .btn:hover{border-color:var(--sky-ink)}
+.sky .btn.primary{background:var(--sky-ink);color:var(--sky-mid);border-color:var(--sky-ink)}
+.sky .btn[aria-pressed="true"]{background:var(--sky-ink);color:var(--sky-mid)}
+.skydeck{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:14px 28px;align-items:center;padding:14px 16px;border:1px solid var(--sky-edge);border-radius:14px;background:var(--sky-glass);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:22px;border:1px solid var(--sky-edge)}
+.seg button{border:0;background:transparent;border-radius:999px;padding:.4rem .85rem;font-size:.86rem;font-weight:600;cursor:pointer;color:var(--sky-ink)}
+.seg button[aria-pressed="true"]{background:var(--sky-ink);color:var(--sky-mid)}
+.sky-cap{display:block;font-size:.8rem;color:var(--sky-muted);margin-top:6px}
+.drop{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between;min-width:0}
+.drop p{margin:0;font-family:var(--f-display);font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.2;text-wrap:balance;min-width:0;flex:1 1 260px}
+.drop .row{gap:8px}
+.bar{background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2)}
+@media (max-width:820px){.skydeck{grid-template-columns:1fr}}
+
+@media (max-width:820px){
+  .cover{grid-template-columns:1fr}
+  .turntable{order:-1;justify-items:start}
+  .disc{width:min(62vw,260px)}
+  .liner,.sides{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .track{grid-template-columns:2.2rem minmax(0,1fr)}
+  .t-actions{grid-column:2;justify-content:flex-start}
+  .grid2{grid-template-columns:1fr}
+}
+</style>
+
+<section class="sky" id="top" data-sky="sun" aria-label="Cover">
+ <canvas id="skyCanvas" aria-hidden="true"></canvas>
+ <div class="sky-inner">
+  <header class="cover">
+    <div>
+      <div class="catalog mono"><span>Cat. no. DAC-001</span><span>Disc 01</span><span>Stereo · 33⅓ rpm</span></div>
+      <h1 class="title"><span>Dill</span><span class="aur">aur</span><span>Chill</span></h1>
+      <p class="deva"><span lang="hi">दिल और चिल</span> · Sunlight to Starlight</p>
+      <p class="sub">A late-night record for two: forgotten 2010s Bollywood, Indian indie, Punjabi heat, Coke Studio and the R&amp;B that plays after midnight.</p>
+      <div class="cover-actions">
+        <a class="btn primary" href="#library">Open the collection</a>
+        <a class="btn" href="#tracklist">Tracklisting</a>
+        <span class="count-big"><b id="totalCount">0</b>tracks on this disc</span>
+      </div>
+    </div>
+    <div class="turntable">
+      <div class="disc" id="disc" aria-hidden="true"><div class="label"><div><div class="l1">Dill aur Chill</div><div class="l2">DAC-001 · SIDE A</div></div></div></div>
+      <div class="rpm mono"><button class="btn" id="needle" type="button" aria-pressed="false">Lift needle</button><span>One turn every 1.8 s</span></div>
+    </div>
+  </header>
+  <div class="skydeck">
+    <div>
+      <div class="seg" id="skySeg" role="group" aria-label="Choose the sky">
+        <button type="button" data-sky="auto" aria-pressed="true">Auto</button>
+        <button type="button" data-sky="sun" aria-pressed="false">Sun</button>
+        <button type="button" data-sky="rain" aria-pressed="false">Rain</button>
+        <button type="button" data-sky="moon" aria-pressed="false">Moon</button>
+        <button type="button" data-sky="stars" aria-pressed="false">Stars</button>
+      </div>
+      <span class="sky-cap" id="skyCap">Auto follows your clock.</span>
+    </div>
+    <div class="drop">
+      <p id="dropLine">Hazy and golden out there. Start with the windows down.</p>
+      <div class="row"><a class="btn primary" id="dropGo" href="#ch-1">Start here ↓</a><button class="btn" id="dropMatch" type="button">Songs for this sky</button></div>
+    </div>
+  </div>
+ </div>
+</section>
+<div class="wrap">
+
+  <section class="liner" aria-labelledby="linerTitle">
+    <div>
+      <h2 id="linerTitle">Liner notes</h2>
+      <p>This disc follows the sky. It opens in hazy late sun with acoustic voices you already trust, drifts through the Bollywood songs that lived on your phone in 2012 and quietly fell off the radio, and reaches golden hour with the indie bands somebody always asks about. Then the rain comes in: monsoon songs, chai, and the slow conversations.</p>
+      <p>Side B is night. Punjabi and a full-volume singalong, then the moon comes up over R&amp;B and Lahore ghazals. It ends under the stars with Sufi prayers and a reprise of a song from the first chapter, so the night closes where it began.</p>
+      <p>Hindi carries the disc. English threads through it, Punjabi takes over the middle of Side B, and Urdu arrives when the poetry needs it.</p>
+    </div>
+    <div>
+      <div class="facts" id="facts"></div>
+      <div class="legend">
+        <span><span class="kind F">Familiar</span> you'll know every word</span>
+        <span><span class="kind O">Forgotten</span> a 2010s favourite to rediscover</span>
+        <span><span class="kind G">Hidden gem</span> a discovery</span>
+        <span><span class="kind M">Ours</span> your own additions</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="toc" id="tracklist" aria-labelledby="tocTitle">
+    <div class="toc-head"><h2 id="tocTitle">Tracklisting</h2><span class="mono" style="color:var(--muted)">Nine chapters · sun to stars</span></div>
+    <div class="sides" id="sides"></div>
+  </section>
+</div>
+
+<div class="bar" id="library">
+  <div class="wrap">
+    <div class="bar-row">
+      <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search songs, artists, films" autocomplete="off"></label>
+      <button class="btn" id="filterToggle" type="button" aria-expanded="false" aria-controls="filters">Filters</button>
+      <button class="btn" id="favOnly" type="button" aria-pressed="false">★ Favourites</button>
+      <button class="btn" id="skyMatch" type="button" aria-pressed="false">Match the sky</button>
+      <span class="shown" id="shown" aria-live="polite"></span>
+    </div>
+    <div class="filters" id="filters" data-collapsed="true">
+      <select id="fLang" aria-label="Language"><option value="">All languages</option></select>
+      <select id="fDecade" aria-label="Decade"><option value="">All decades</option></select>
+      <select id="fMood" aria-label="Mood"><option value="">All moods</option></select>
+      <select id="fCh" aria-label="Chapter"><option value="">All chapters</option></select>
+      <select id="fKind" aria-label="Discovery type"><option value="">Familiar + discoveries</option><option value="F">Familiar favourites</option><option value="O">Forgotten favourites</option><option value="G">Hidden gems</option><option value="M">Our additions</option></select>
+      <button class="btn" id="clearF" type="button">Clear</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="lib"></main>
+
+<div class="wrap">
+  <section class="studio" id="studio" aria-labelledby="studioTitle">
+    <h2 id="studioTitle">The studio</h2>
+    <p>Your changes live in this browser only. The curated disc is kept separately, so anything you remove can be restored.</p>
+    <div class="panels">
+      <form class="panel" id="addForm" novalidate>
+        <h3>Add a song</h3>
+        <div class="field"><label for="aTitle">Song title</label><input id="aTitle" required></div>
+        <div class="field"><label for="aArtist">Artist</label><input id="aArtist" required></div>
+        <div class="grid2">
+          <div class="field"><label for="aYear">Year</label><input id="aYear" type="number" min="1940" max="2100" inputmode="numeric"></div>
+          <div class="field"><label for="aLang">Language</label><select id="aLang"></select></div>
+          <div class="field"><label for="aMood">Mood</label><select id="aMood"></select></div>
+          <div class="field"><label for="aCh">Chapter</label><select id="aCh"></select></div>
+        </div>
+        <div class="field"><label for="aLink">YouTube link (optional)</label><input id="aLink" type="url" placeholder="https://www.youtube.com/watch?v=…"></div>
+        <div class="field"><label for="aNote">Why it belongs</label><input id="aNote"></div>
+        <div class="row"><button class="btn primary" type="submit">Add to disc</button><span id="addMsg" class="mono" style="color:var(--danger)"></span></div>
+      </form>
+
+      <div class="panel">
+        <h3>Export</h3>
+        <p>Copy your version of the disc (order, favourites, notes, links and additions) to keep or send.</p>
+        <textarea id="exportBox" readonly aria-label="Exported playlist data"></textarea>
+        <div class="row"><button class="btn" id="exportBtn" type="button">Generate export</button><button class="btn primary" id="copyBtn" type="button">Copy</button></div>
+      </div>
+
+      <div class="panel">
+        <h3>Import</h3>
+        <p>Paste an export, or choose a saved .json file. This replaces your current changes.</p>
+        <textarea id="importBox" aria-label="Playlist data to import" placeholder='{"app":"dill-aur-chill", …}'></textarea>
+        <div class="row"><input id="importFile" type="file" accept=".json,application/json" aria-label="Choose a JSON file"><button class="btn primary" id="importBtn" type="button">Import</button></div>
+      </div>
+
+      <div class="panel">
+        <h3>Restore &amp; reset</h3>
+        <p id="removedInfo">Nothing removed yet.</p>
+        <div class="row"><button class="btn" id="restoreBtn" type="button">Restore removed tracks</button><button class="btn" id="orderBtn" type="button">Restore curated order</button></div>
+        <div class="row"><button class="btn danger" id="resetBtn" type="button">Reset everything</button></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>DILL AUR CHILL · Disc 01 · Sunlight to Starlight</span>
+    <span>Songs open on YouTube in a new tab. Nothing plays inside this page.</span>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+const CHAPTERS=[
+ {n:1,side:"A",sky:"sun",name:"The First Pour",blurb:"Lamps low, first glass, late sun through the window. Acoustic voices you already trust, so the room settles in."},
+ {n:2,side:"A",sky:"sun",name:"The Nostalgia Hit",blurb:"The 2010s soundtrack cuts that lived on your phone and fell off the radio. Builds from long-drive dreamy to full sangeet, then cools off."},
+ {n:3,side:"A",sky:"sun",name:"The Indie Corner",blurb:"Golden hour. Kolkata dream-pop, Delhi horns, Lahore folk-rock and a Partition letter. The part of the night where someone asks who this is."},
+ {n:4,side:"A",sky:"rain",name:"Barsaat",blurb:"Rain on the glass, chai on the stove. Monsoon Bollywood, grey-day indie and soft R&B for staying in."},
+ {n:5,side:"A",sky:"rain",name:"Dil Ki Baatein",blurb:"Conversation volume. Slow R&B, ghazal-shaped Bollywood and Coke Studio romance, ending on a Punjabi heartbreak that flips the record."},
+ {n:6,side:"B",sky:"night",name:"The Punjabi Switch",blurb:"Starts tender and ends with dhol. Sartaaj and Batalvi, the PropheC's late-night R&B, Sunanda's swagger and a Coke Studio Jugni."},
+ {n:7,side:"B",sky:"night",name:"The Singalong",blurb:"Everybody knows every word. The peak of the night, landing softly on Drake so the room can breathe."},
+ {n:8,side:"B",sky:"moon",name:"After Hours",blurb:"The moon is up. Toronto and LA R&B drift into Lahore ghazal, then Coke Studio lifts the room back toward the light."},
+ {n:9,side:"B",sky:"stars",name:"The Last Song",blurb:"Every star out. Two prayers, a Sufi alif and a reprise of a song from the first chapter, sung home from the other side."}
+];
+const MOODS=["Warm","Dreamy","Romantic","Nostalgic","Playful","Euphoric","Cozy","Bittersweet","Late-night","Soulful","Devotional"];
+const LANGS=["Hindi","English","Punjabi","Urdu"];
+// [title, artist, year, language, style, mood, chapter, kind, source, liner note, verification note]
+const RAW=[
+["Kho Gaye Hum Kahan","Jasleen Royal & Prateek Kuhad",2016,"Hindi","Acoustic pop","Warm",1,"F","Baar Baar Dekho","The opening exhale: two voices, one guitar, no hurry."],
+["Saibo","Shreya Ghoshal & Tochi Raina",2011,"Hindi","Folk pop","Warm",1,"O","Shor in the City · Sachin–Jigar","Sachin–Jigar before they were everywhere. The film was missed; the song shouldn't be."],
+["Moh Moh Ke Dhaage","Papon",2015,"Hindi","Ballad","Romantic",1,"F","Dum Laga Ke Haisha · Anu Malik","Papon sings it early. Monali Thakur sings it home at the end of the disc."],
+["Kyon","Papon & Sunidhi Chauhan",2012,"Hindi","Whimsical pop","Warm",1,"O","Barfi! · Pritam",""],
+["Tum Jab Paas","Prateek Kuhad",2015,"Hindi","Acoustic","Romantic",1,"G","In Tokens & Charms","Before cold/mess, there was this quiet Hindi song.","Release year from memory; confirm the EP date."],
+["Alag Aasmaan","Anuv Jain",2020,"Hindi","Acoustic","Dreamy",1,"F","Single",""],
+["Location","Khalid",2016,"English","R&B","Warm",1,"F","American Teen",""],
+["Japanese Denim","Daniel Caesar",2016,"English","Soul","Dreamy",1,"G","Single",""],
+["Loving Is Easy","Rex Orange County ft. Benny Sings",2017,"English","Bedroom pop","Playful",1,"G","Single",""],
+["Riptide","Vance Joy",2013,"English","Indie folk","Playful",1,"F","Single",""],
+["Iktara","Kavita Seth & Amitabh Bhattacharya",2009,"Hindi","Folk pop","Bittersweet",1,"O","Wake Up Sid · Amit Trivedi","A 2009 outlier, kept because the decade's indie-Bollywood sound starts here."],
+["Hairat","Lucky Ali",2010,"Hindi","Pop","Dreamy",1,"O","Anjaana Anjaani · Vishal–Shekhar",""],
+["Khuda Jaane","KK & Shilpa Rao",2008,"Hindi","Pop ballad","Romantic",1,"F","Bachna Ae Haseeno · Vishal–Shekhar","A 2008 outlier with 2010s bones."],
+["Maana Ke Hum Yaar Nahin","Parineeti Chopra",2017,"Hindi","Acoustic","Warm",1,"G","Meri Pyaari Bindu · Sachin–Jigar","An actor's first song, sung like a voice note."],
+["Mann Mast Magan","Arijit Singh",2014,"Hindi","Sufi pop","Warm",1,"O","2 States · Shankar–Ehsaan–Loy",""],
+["Tu Jo Mila","KK",2015,"Hindi","Ballad","Warm",1,"F","Bajrangi Bhaijaan · Pritam",""],
+["Tu Hai","A.R. Rahman & Sanah Moidutty",2016,"Hindi","Ballad","Dreamy",1,"G","Mohenjo Daro · A.R. Rahman","The film sank. This duet deserved a better boat."],
+["Jab Tak","Armaan Malik",2016,"Hindi","Pop ballad","Romantic",1,"F","M.S. Dhoni: The Untold Story · Amaal Mallik",""],
+["Tera Ban Jaunga","Akhil Sachdeva & Tulsi Kumar",2019,"Hindi","Pop ballad","Romantic",1,"F","Kabir Singh",""],
+["Phir Se Ud Chala","Mohit Chauhan",2011,"Hindi","Folk rock","Nostalgic",1,"F","Rockstar · A.R. Rahman","Lifts the needle into Chapter 2."],
+
+["Khaabon Ke Parinday","Mohit Chauhan & Alyssa Mendonsa",2011,"Hindi","Road pop","Dreamy",2,"O","Zindagi Na Milegi Dobara · Shankar–Ehsaan–Loy","The ZNMD song nobody puts on the party list. It belongs on the long drive."],
+["Safarnama","Lucky Ali",2015,"Hindi","Folk pop","Nostalgic",2,"O","Tamasha · A.R. Rahman",""],
+["Sham","Amit Trivedi & Nikhil D'Souza",2010,"Hindi","Soft rock","Dreamy",2,"O","Aisha · Amit Trivedi",""],
+["Pee Loon","Mohit Chauhan",2010,"Hindi","Romantic pop","Romantic",2,"F","Once Upon a Time in Mumbaai · Pritam",""],
+["Dil Kyun Yeh Mera","KK",2010,"Hindi","Pop ballad","Romantic",2,"O","Kites · Rajesh Roshan","KK at full stretch."],
+["Bin Tere","Shafqat Amanat Ali & Sunidhi Chauhan",2010,"Hindi","Pop ballad","Romantic",2,"O","I Hate Luv Storys · Vishal–Shekhar",""],
+["Tum Jo Aaye","Rahat Fateh Ali Khan & Tulsi Kumar",2010,"Hindi","Romantic pop","Romantic",2,"F","Once Upon a Time in Mumbaai · Pritam",""],
+["Hosanna","Leon D'Souza & Maria Roe Vincent",2012,"Hindi","Pop","Dreamy",2,"O","Ekk Deewana Tha · A.R. Rahman",""],
+["Aashiyan","Shreya Ghoshal & Nikhil Paul George",2012,"Hindi","Whimsical pop","Playful",2,"O","Barfi! · Pritam",""],
+["Chaar Kadam","Shaan & Shreya Ghoshal",2014,"Hindi","Romantic pop","Warm",2,"O","PK · Shantanu Moitra",""],
+["Manwa Laage","Arijit Singh & Shreya Ghoshal",2014,"Hindi","Romantic","Romantic",2,"O","Happy New Year · Vishal–Shekhar","The quiet song on a very loud album."],
+["Main Rang Sharbaton Ka","Atif Aslam & Chinmayi",2013,"Hindi","Romantic pop","Romantic",2,"O","Phata Poster Nikhla Hero · Pritam",""],
+["Matargashti","Mohit Chauhan",2015,"Hindi","Retro pop","Playful",2,"F","Tamasha · A.R. Rahman",""],
+["Ambarsariya","Sona Mohapatra",2013,"Hindi","Folk pop","Playful",2,"O","Fukrey · Ram Sampath","Punjabi-tinged Hindi, a quiet preview of Side B."],
+["Kheech Meri Photo","Darshan Raval, Neeti Mohan & Akasa Singh",2016,"Hindi","Dance pop","Playful",2,"O","Sanam Teri Kasam · Himesh Reshammiya","","Singer credits from memory."],
+["Gal Mitthi Mitthi","Tochi Raina",2010,"Hindi","Bhangra pop","Playful",2,"O","Aisha · Amit Trivedi",""],
+["Dhunki","Neha Bhasin",2011,"Hindi","Dance pop","Playful",2,"O","Mere Brother Ki Dulhan · Sohail Sen",""],
+["Aadat Se Majboor","Benny Dayal & Ujjayinee Roy",2011,"Hindi","Retro pop","Playful",2,"O","Ladies vs Ricky Bahl · Salim–Sulaiman",""],
+["Ishq Wala Love","Neeti Mohan, Salim Merchant & Shekhar Ravjiani",2012,"Hindi","Pop","Romantic",2,"O","Student of the Year · Vishal–Shekhar",""],
+["Cham Cham","Monali Thakur",2016,"Hindi","Dance pop","Playful",2,"F","Baaghi · Meet Bros",""],
+["Gulaabo","Vishal Dadlani & Anusha Mani",2015,"Hindi","Disco pop","Playful",2,"O","Shaandaar · Amit Trivedi",""],
+["Ude Dil Befikre","Benny Dayal",2016,"Hindi","Dance pop","Euphoric",2,"O","Befikre · Vishal–Shekhar",""],
+["Udi Udi Jaye","Sukhwinder Singh, Bhoomi Trivedi & Karsan Sargathiya",2017,"Hindi","Garba pop","Euphoric",2,"O","Raees · Ram Sampath","","Singer credits from memory."],
+["Shubhaarambh","Shruti Pathak & Divya Kumar",2013,"Hindi","Garba pop","Euphoric",2,"O","Kai Po Che! · Amit Trivedi",""],
+["Ainvayi Ainvayi","Sunidhi Chauhan & Salim Merchant",2010,"Hindi","Wedding dance","Euphoric",2,"O","Band Baaja Baaraat · Salim–Sulaiman","Peak sangeet energy, then a cool-down."],
+["Love You Zindagi","Jasleen Royal & Amit Trivedi",2016,"Hindi","Feel-good pop","Warm",2,"F","Dear Zindagi · Amit Trivedi",""],
+
+["Choo Lo","The Local Train",2015,"Hindi","Alt rock","Romantic",3,"F","Aalas Ka Pedh",""],
+["Firefly","When Chai Met Toast",2017,"English","Folk pop","Warm",3,"G","Single","Kochi band; English verses with a Hindi line tucked inside.","Release year not confirmed."],
+["I Love You Baby, I Love You Doll","Parekh & Singh",2016,"English","Dream pop","Playful",3,"G","Ocean","Kolkata duo. First self-released in 2013, reissued worldwide in 2016."],
+["Ghost","Parekh & Singh",2017,"English","Dream pop","Dreamy",3,"G","Ocean",""],
+["Honey","Raveena",2017,"English","Neo-soul","Dreamy",3,"G","Single","Indian-American R&B: a bridge between both of your playlists.","Release year from memory."],
+["Heat Waves","Glass Animals",2020,"English","Indie pop","Dreamy",3,"F","Dreamland",""],
+["Floated By","Peter Cat Recording Co.",2019,"English","Jazz pop","Bittersweet",3,"G","Bismillah","Delhi crooner pop with horns. The video uses footage from the singer's own wedding."],
+["Memory Box","Peter Cat Recording Co.",2019,"English","Big-band pop","Euphoric",3,"G","Bismillah",""],
+["Nikamma","Lifafa",2019,"Hindi","Folktronica","Playful",3,"G","Jaago","PCRC's frontman solo, with harmonium and drum machines."],
+["Jaago","Lifafa",2019,"Hindi","Folktronica","Euphoric",3,"G","Jaago",""],
+["Udd Gaye","Ritviz",2017,"Hindi","Electronic","Euphoric",3,"F","Single",""],
+["Liggi","Ritviz",2018,"Hindi","Electronic","Playful",3,"F","Single",""],
+["Laung Gawacha","Nucleya ft. Avneet Khurmi",2016,"Punjabi","Electronic folk","Euphoric",3,"F","Single","A Punjabi folk standard run through Bass Rani.","Release year from memory."],
+["The Less I Know the Better","Tame Impala",2015,"English","Psych pop","Playful",3,"F","Currents",""],
+["Madari","Vishal Dadlani & Sonu Kakkar",2013,"Hindi","Folk rock","Euphoric",3,"G","Coke Studio @ MTV · Clinton Cerejo",""],
+["Tinak Dhin","Ali Hamza, Ali Sethi & Waqar Ehsin",2017,"Urdu","Folk pop","Euphoric",3,"G","Coke Studio Pakistan S10",""],
+["Aaftaab","The Local Train",2018,"Hindi","Alt rock","Dreamy",3,"G","Vaaqif",""],
+["Kasoor","Prateek Kuhad",2020,"Hindi","Acoustic","Romantic",3,"F","Single",""],
+["Chal Diye","Zeb & Haniya",2008,"Urdu","Folk rock","Dreamy",3,"G","Chup!","Lahore cousins who made Urdu indie feel like a secret."],
+["Tu Kisi Rail Si Guzarti Hai","Indian Ocean",2015,"Hindi","Folk rock","Bittersweet",3,"G","Masaan","Dushyant Kumar's poetry on a rail-track rhythm.","Vocal credit to confirm."],
+["Nahi Milta","Bayaan",2015,"Urdu","Alt rock","Bittersweet",3,"G","Debut single","A Lahore band's first song, later used in the film Yalghaar."],
+["Husna","Piyush Mishra",2012,"Hindi","Ghazal folk","Bittersweet",3,"G","Coke Studio @ MTV","A letter to someone left behind at Partition. Let it finish in silence.","Season and year to confirm."],
+
+["Baarishein","Anuv Jain",2018,"Hindi","Acoustic","Cozy",4,"F","Single","The rain chapter opens on the obvious song, because it's the right one."],
+["Mitti Di Khushboo","Ayushmann Khurrana",2014,"Hindi","Pop ballad","Cozy",4,"O","Single","The smell of first rain on dry earth, as a song."],
+["Barso Re","Shreya Ghoshal & Uday Mazumdar",2007,"Hindi","Folk pop","Playful",4,"F","Guru · A.R. Rahman","The monsoon anthem, a few years before the decade.","Co-singer credit from memory."],
+["Kabhi Jo Baadal Barse","Arijit Singh",2013,"Hindi","Ballad","Cozy",4,"F","Jackpot · Sharib–Toshi",""],
+["Baarish","Mohammed Irfan & Gajendra Verma",2014,"Hindi","Pop ballad","Romantic",4,"F","Yaariyan · Mithoon",""],
+["Bheegi Si Bhaagi Si","Mohit Chauhan & Antara Mitra",2010,"Hindi","Pop","Cozy",4,"O","Raajneeti · Pritam","","Singer credits from memory."],
+["Coffee","Miguel",2015,"English","R&B","Cozy",4,"G","Wildheart",""],
+["cold/mess","Prateek Kuhad",2018,"English","Acoustic","Bittersweet",4,"F","cold/mess","A grey-day song if there ever was one."],
+["Jee Le Zaraa","Vishal Dadlani",2012,"Hindi","Soft rock","Bittersweet",4,"O","Talaash · Ram Sampath","Wet Mumbai streets at night."],
+["Phir Le Aya Dil (Reprise)","Arijit Singh",2012,"Hindi","Ghazal pop","Bittersweet",4,"F","Barfi! · Pritam",""],
+["Zaroori Tha","Rahat Fateh Ali Khan",2014,"Urdu","Ballad","Bittersweet",4,"F","Back 2 Love",""],
+["Barish","Sajjad Ali",2020,"Urdu","Ballad","Cozy",4,"G","Single",""],
+["Good News","Mac Miller",2020,"English","Soft rap","Cozy",4,"F","Circles",""],
+["After the Storm","Kali Uchis ft. Tyler, the Creator & Bootsy Collins",2018,"English","Soul","Cozy",4,"F","Isolation","Rain chapter ends with the sun coming back out."],
+
+["Best Part","Daniel Caesar ft. H.E.R.",2017,"English","R&B","Romantic",5,"F","Freudian",""],
+["Zehnaseeb","Chinmayi & Shekhar Ravjiani",2014,"Hindi","Romantic","Romantic",5,"O","Hasee Toh Phasee · Vishal–Shekhar",""],
+["Jiyein Kyun","Papon",2011,"Hindi","Ballad","Bittersweet",5,"O","Dum Maaro Dum · Pritam","Papon's other great Bollywood song, mostly forgotten."],
+["Kabira","Tochi Raina & Rekha Bhardwaj",2013,"Hindi","Sufi folk","Bittersweet",5,"F","Yeh Jawaani Hai Deewani · Pritam",""],
+["Tum Ho","Mohit Chauhan",2011,"Hindi","Ballad","Romantic",5,"F","Rockstar · A.R. Rahman",""],
+["Pashmina","Amit Trivedi",2016,"Hindi","Ballad","Dreamy",5,"G","Fitoor · Amit Trivedi",""],
+["Sajde","KK & Nihira Joshi",2010,"Hindi","Romantic","Romantic",5,"O","Khatta Meetha · Pritam",""],
+["Jhoom","Ali Zafar",2011,"Urdu","Pop ballad","Romantic",5,"O","Jhoom",""],
+["Tera Woh Pyar (Nawazishein Karam)","Momina Mustehsan & Asim Azhar",2016,"Urdu","Coke Studio pop","Romantic",5,"F","Coke Studio Pakistan S9",""],
+["Get You","Daniel Caesar ft. Kali Uchis",2016,"English","R&B","Romantic",5,"F","Freudian",""],
+["Pehli Dafa","Atif Aslam",2017,"Hindi","Ballad","Romantic",5,"F","Single",""],
+["Ishq Sufiyana","Kamal Khan",2011,"Hindi","Sufi pop","Romantic",5,"O","The Dirty Picture · Vishal–Shekhar",""],
+["Tujhe Sochta Hoon","KK",2012,"Hindi","Rock ballad","Romantic",5,"O","Jannat 2 · Pritam",""],
+["Banjaara","Mohammed Irfan",2014,"Hindi","Ballad","Romantic",5,"F","Ek Villain · Mithoon",""],
+["Hawayein","Arijit Singh",2017,"Hindi","Ballad","Romantic",5,"F","Jab Harry Met Sejal · Pritam",""],
+["Saathiya","Shreya Ghoshal",2011,"Hindi","Ballad","Romantic",5,"O","Singham · Ajay–Atul",""],
+["Kaun Tujhe","Palak Muchhal",2016,"Hindi","Ballad","Romantic",5,"F","M.S. Dhoni: The Untold Story · Amaal Mallik",""],
+["Dilbaro","Harshdeep Kaur, Vibha Saraf & Shankar Mahadevan",2018,"Hindi","Folk ballad","Bittersweet",5,"F","Raazi · Shankar–Ehsaan–Loy",""],
+["Sure Thing","Miguel",2010,"English","R&B","Romantic",5,"F","All I Want Is You",""],
+["Dil Diyan Gallan","Atif Aslam",2017,"Hindi","Ballad","Romantic",5,"F","Tiger Zinda Hai · Vishal–Shekhar",""],
+["Mohe Rang Do Laal","Shreya Ghoshal & Pandit Birju Maharaj",2015,"Hindi","Semi-classical","Romantic",5,"F","Bajirao Mastani · Sanjay Leela Bhansali",""],
+["LOVE.","Kendrick Lamar ft. Zacari",2017,"English","Hip-hop soul","Romantic",5,"F","DAMN.",""],
+["Ishq Bulaava","Sanam Puri & Shipra Goyal",2014,"Hindi","Romantic pop","Romantic",5,"O","Hasee Toh Phasee · Vishal–Shekhar",""],
+["I Want You Around","Snoh Aalegra",2019,"English","Soul","Romantic",5,"G","Ugh, Those Feels Again","","Release year from memory."],
+["Jeena Jeena","Atif Aslam",2015,"Hindi","Ballad","Romantic",5,"F","Badlapur · Sachin–Jigar",""],
+["Kaise Hua","Vishal Mishra",2019,"Hindi","Ballad","Romantic",5,"F","Kabir Singh · Vishal Mishra",""],
+["Hawa Banke","Darshan Raval",2019,"Hindi","Pop ballad","Romantic",5,"F","Single",""],
+["Daryaa","Ammy Virk & Shahid Mallya",2018,"Punjabi","Folk ballad","Bittersweet",5,"G","Manmarziyaan · Amit Trivedi",""],
+["Khaab","Akhil",2016,"Punjabi","Romantic pop","Romantic",5,"F","Single","Flips the record over to Punjabi."],
+
+["Soch","Harrdy Sandhu",2013,"Punjabi","Ballad","Romantic",6,"O","Single",""],
+["Sai","Satinder Sartaaj",2010,"Punjabi","Sufi","Soulful",6,"G","Single","Punjab's poet-singer. Lights low for this one.","Release year from memory."],
+["Qismat","Ammy Virk",2017,"Punjabi","Ballad","Romantic",6,"F","Single",""],
+["Ikk Kudi","Diljit Dosanjh",2016,"Punjabi","Folk ballad","Romantic",6,"F","Udta Punjab · Amit Trivedi","Shiv Kumar Batalvi's poem, sung plainly."],
+["Ki Banu Duniya Da","Gurdas Maan & Diljit Dosanjh",2015,"Punjabi","Folk","Soulful",6,"G","Coke Studio @ MTV S4 · Jatinder Shah","Gurdas Maan reworks his own song with the singer who grew up on it."],
+["12 Saal","Bilal Saeed",2011,"Punjabi","Pop","Nostalgic",6,"O","Twelve",""],
+["Adhi Adhi Raat","Bilal Saeed",2012,"Punjabi","Pop","Playful",6,"O","Twelve",""],
+["Kina Chir","The PropheC",2016,"Punjabi","R&B","Late-night",6,"G","Single","Calgary-made Punjabi R&B, years before that sound took over."],
+["Excuses","AP Dhillon, Gurinder Gill & Intense",2020,"Punjabi","Hip-hop","Late-night",6,"F","Single",""],
+["Brown Munde","AP Dhillon, Gurinder Gill & Shinda Kahlon",2020,"Punjabi","Hip-hop","Playful",6,"F","Single",""],
+["Lover","Diljit Dosanjh",2021,"Punjabi","Pop","Romantic",6,"F","MoonChild Era",""],
+["Lahore","Guru Randhawa",2017,"Punjabi","Pop","Playful",6,"F","Single",""],
+["Do You Know","Diljit Dosanjh",2016,"Punjabi","Pop","Playful",6,"F","Single",""],
+["Patola","Guru Randhawa ft. Bohemia",2015,"Punjabi","Pop","Playful",6,"F","Single","","Release year from memory."],
+["Satisfya","Imran Khan",2013,"Punjabi","Urban","Playful",6,"F","Single",""],
+["Laembadgini","Diljit Dosanjh",2016,"Punjabi","Bhangra pop","Euphoric",6,"F","Single","","Release year from memory."],
+["Patake","Sunanda Sharma",2016,"Punjabi","Pop","Playful",6,"O","Single",""],
+["Kya Baat Ay","Harrdy Sandhu",2018,"Punjabi","Dance pop","Euphoric",6,"F","Single",""],
+["Jaani Tera Naa","Sunanda Sharma",2017,"Punjabi","Pop","Playful",6,"O","Single",""],
+["Nikle Currant","Jassi Gill & Neha Kakkar",2018,"Punjabi","Bhangra pop","Euphoric",6,"F","Single",""],
+["Lamberghini","The Doorbeen ft. Ragini",2018,"Punjabi","Pop","Playful",6,"F","Single",""],
+["Coka","Sukh-E Muzical Doctorz ft. Alankrita Sahai",2019,"Punjabi","Dance pop","Euphoric",6,"F","Single","","Release year from memory."],
+["Illegal Weapon","Jasmine Sandlas & Garry Sandhu",2017,"Punjabi","Bhangra pop","Euphoric",6,"F","Single","","Release year from memory."],
+["Naah","Harrdy Sandhu",2017,"Punjabi","Dance pop","Euphoric",6,"F","Single",""],
+["Jugni","Arif Lohar & Meesha Shafi",2010,"Punjabi","Folk","Euphoric",6,"F","Coke Studio Pakistan S3",""],
+
+["Ilahi","Arijit Singh",2013,"Hindi","Road pop","Euphoric",7,"F","Yeh Jawaani Hai Deewani · Pritam",""],
+["Kabhi Kabhi Aditi","Rashid Ali",2008,"Hindi","Pop","Playful",7,"F","Jaane Tu… Ya Jaane Na · A.R. Rahman","Every college road trip, 2008 onwards."],
+["Señorita","Farhan Akhtar, Hrithik Roshan, Abhay Deol & María del Mar Fernández",2011,"Hindi","Flamenco pop","Playful",7,"F","Zindagi Na Milegi Dobara · Shankar–Ehsaan–Loy",""],
+["Gallan Goodiyaan","Yashita Sharma, Manish Kumar Tipu, Farhan Akhtar & Shankar Mahadevan",2015,"Hindi","Party","Euphoric",7,"F","Dil Dhadakne Do · Shankar–Ehsaan–Loy",""],
+["Desi Girl","Shankar Mahadevan, Sunidhi Chauhan & Vishal Dadlani",2008,"Hindi","Party","Euphoric",7,"F","Dostana · Vishal–Shekhar","Technically 2008. Spiritually the anthem of this whole disc."],
+["Subha Hone Na De","Mika Singh & Shefali Alvares",2011,"Hindi","Party","Euphoric",7,"F","Desi Boyz · Pritam",""],
+["Kar Gayi Chull","Badshah, Fazilpuria, Sukriti Kakar & Neha Kakkar",2016,"Hindi","Party","Euphoric",7,"F","Kapoor & Sons",""],
+["Balam Pichkari","Vishal Dadlani & Shalmali Kholgade",2013,"Hindi","Party","Euphoric",7,"F","Yeh Jawaani Hai Deewani · Pritam",""],
+["London Thumakda","Labh Janjua, Sonu Kakkar & Neha Kakkar",2014,"Hindi","Wedding","Euphoric",7,"F","Queen · Amit Trivedi",""],
+["Nagada Sang Dhol","Shreya Ghoshal & Osman Mir",2013,"Hindi","Garba","Euphoric",7,"F","Goliyon Ki Raasleela Ram-Leela · Sanjay Leela Bhansali",""],
+["Tune Maari Entriyaan","KK, Neeti Mohan, Bappi Lahiri & Vishal Dadlani",2014,"Hindi","Dance","Euphoric",7,"F","Gunday · Sohail Sen",""],
+["Kala Chashma","Badshah, Neha Kakkar & Indeep Bakshi",2016,"Hindi","Party","Euphoric",7,"F","Baar Baar Dekho",""],
+["Nachde Ne Saare","Jasleen Royal, Harshdeep Kaur & Siddharth Mahadevan",2016,"Hindi","Wedding","Euphoric",7,"F","Baar Baar Dekho · Jasleen Royal",""],
+["Sooraj Dooba Hain","Arijit Singh & Aditi Singh Sharma",2015,"Hindi","EDM pop","Euphoric",7,"F","Roy · Amaal Mallik",""],
+["Abhi Toh Party Shuru Hui Hai","Badshah & Aastha Gill",2014,"Hindi","Party","Euphoric",7,"F","Khoobsurat · Badshah",""],
+["Amplifier","Imran Khan",2009,"Punjabi","Urban","Playful",7,"F","Unforgettable",""],
+["Ride It","Jay Sean",2008,"English","R&B pop","Playful",7,"F","My Own Way","UK desi R&B that every Indian party played."],
+["Jalebi Baby","Tesher",2020,"English","Pop","Playful",7,"F","Single",""],
+["Laung Laachi","Mannat Noor",2018,"Punjabi","Folk pop","Romantic",7,"F","Laung Laachi",""],
+["Badtameez Dil","Benny Dayal & Shefali Alvares",2013,"Hindi","Dance","Euphoric",7,"F","Yeh Jawaani Hai Deewani · Pritam",""],
+["Uptown Funk","Mark Ronson ft. Bruno Mars",2014,"English","Funk pop","Euphoric",7,"F","Uptown Special",""],
+["I Feel It Coming","The Weeknd ft. Daft Punk",2016,"English","Synth pop","Playful",7,"F","Starboy",""],
+["Sunflower","Post Malone & Swae Lee",2018,"English","Pop rap","Playful",7,"F","Spider-Man: Into the Spider-Verse",""],
+["A Sky Full of Stars","Coldplay",2014,"English","Pop","Euphoric",7,"F","Ghost Stories",""],
+["Find Your Love","Drake",2010,"English","R&B","Romantic",7,"F","Thank Me Later",""],
+["Blinding Lights","The Weeknd",2019,"English","Synth pop","Euphoric",7,"F","After Hours",""],
+["Hold On, We're Going Home","Drake ft. Majid Jordan",2013,"English","R&B","Late-night",7,"F","Nothing Was the Same","Slows the room down for After Hours."],
+
+["Passionfruit","Drake",2017,"English","Dancehall R&B","Late-night",8,"F","More Life",""],
+["Thinkin Bout You","Frank Ocean",2012,"English","R&B","Late-night",8,"F","channel ORANGE","The one Frank Ocean song on the disc."],
+["Power Trip","J. Cole ft. Miguel",2013,"English","Hip-hop","Late-night",8,"F","Born Sinner",""],
+["Focus","H.E.R.",2016,"English","R&B","Late-night",8,"G","H.E.R. Vol. 1",""],
+["Redbone","Childish Gambino",2016,"English","Funk","Late-night",8,"F","“Awaken, My Love!”",""],
+["Poetic Justice","Kendrick Lamar ft. Drake",2012,"English","Hip-hop","Late-night",8,"F","good kid, m.A.A.d city",""],
+["Die For You","The Weeknd",2016,"English","R&B","Late-night",8,"F","Starboy",""],
+["While We're Young","Jhené Aiko",2017,"English","R&B","Dreamy",8,"G","Trip",""],
+["Dark Red","Steve Lacy",2017,"English","Lo-fi funk","Late-night",8,"G","Single",""],
+["Blue Lights","Jorja Smith",2016,"English","Soul","Late-night",8,"G","Single","","Release year from memory."],
+["Heartbreak Anniversary","Giveon",2020,"English","R&B","Bittersweet",8,"F","Take Time",""],
+["Good Days","SZA",2020,"English","R&B","Dreamy",8,"F","Single",""],
+["Electric","Alina Baraz ft. Khalid",2017,"English","R&B","Dreamy",8,"G","The Color of You","","Release year from memory."],
+["Love Yourz","J. Cole",2014,"English","Hip-hop","Soulful",8,"F","2014 Forest Hills Drive",""],
+["Talking to the Moon","Bruno Mars",2010,"English","Pop ballad","Late-night",8,"F","Doo-Wops & Hooligans","Moon chapter, literally."],
+["Chaand Baaliyan","Aditya A",2021,"Hindi","Acoustic","Dreamy",8,"F","Single","And the moon in Hindi, straight after."],
+["Open","Rhye",2013,"English","Soul","Dreamy",8,"G","Woman",""],
+["Mohabbat","Arooj Aftab",2021,"Urdu","Ambient ghazal","Late-night",8,"G","Vulture Prince","The hinge from R&B into ghazal."],
+["Mehram","Asfar Hussain & Arooj Aftab",2022,"Urdu","Ambient ghazal","Late-night",8,"G","Coke Studio Pakistan S14","Bayaan's singer, who also wrote it."],
+["Ranjish Hi Sahi","Ali Sethi",2017,"Urdu","Ghazal","Bittersweet",8,"G","Coke Studio Pakistan S10","Ahmed Faraz's ghazal, made famous by Mehdi Hassan."],
+["Aankhon Ke Saagar","Shafqat Amanat Ali",2008,"Urdu","Ghazal","Bittersweet",8,"G","Coke Studio Pakistan S1",""],
+["Chal Rein De","Sajjad Ali",2006,"Urdu","Ghazal pop","Bittersweet",8,"G","Single","A 2006 single from Pakistan's prince of pop. Older than the decade, younger than it sounds."],
+["Faasle","Kaavish & Quratulain Balouch",2017,"Urdu","Ballad","Bittersweet",8,"G","Coke Studio Pakistan S10",""],
+["Sayonee","Junoon ft. Rahat Fateh Ali Khan & Ali Noor",2017,"Urdu","Sufi rock","Soulful",8,"F","Coke Studio Pakistan S10",""],
+["Umran Langiyaan","Ali Sethi",2015,"Punjabi","Folk","Soulful",8,"G","Coke Studio Pakistan S8",""],
+["Paar Chanaa De","Shilpa Rao & Noori",2016,"Punjabi","Folk","Soulful",8,"G","Coke Studio Pakistan S9","An Indian singer and a Lahore band on the same Sohni–Mahiwal river."],
+["Sammi Meri Waar","Quratulain Balouch & Umair Jaswal",2015,"Punjabi","Folk","Soulful",8,"G","Coke Studio Pakistan S8",""],
+["Afreen Afreen","Rahat Fateh Ali Khan & Momina Mustehsan",2016,"Urdu","Qawwali pop","Romantic",8,"F","Coke Studio Pakistan S9",""],
+["Chaap Tilak","Abida Parveen & Rahat Fateh Ali Khan",2014,"Urdu","Sufi","Devotional",8,"F","Coke Studio Pakistan S7",""],
+
+["Tajdar-e-Haram","Atif Aslam",2015,"Urdu","Qawwali","Devotional",9,"F","Coke Studio Pakistan S8",""],
+["Aaqa","Abida Parveen & Ali Sethi",2016,"Urdu","Sufi","Devotional",9,"G","Coke Studio Pakistan S9",""],
+["Aik Alif","Saieen Zahoor & Noori",2009,"Punjabi","Sufi rock","Devotional",9,"G","Coke Studio Pakistan S2","A street Sufi singer and a rock band, one ektara between them."],
+["Kun Faya Kun","A.R. Rahman, Javed Ali & Mohit Chauhan",2011,"Hindi","Sufi","Devotional",9,"F","Rockstar · A.R. Rahman",""],
+["Moh Moh Ke Dhaage (Female)","Monali Thakur",2015,"Hindi","Ballad","Romantic",9,"F","Dum Laga Ke Haisha · Anu Malik","The reprise. Papon sang it near the start; Monali Thakur sings it home."]
+];
+const CURATED=RAW.map((r,i)=>({id:"c"+String(i+1).padStart(3,"0"),t:r[0],a:r[1],y:r[2],lang:r[3],style:r[4],mood:r[5],ch:r[6],kind:r[7],src:r[8]||"",note:r[9]||"",check:r[10]||""}));
+const CUR_BY_ID=Object.fromEntries(CURATED.map(t=>[t.id,t]));
+const CUR_ORDER=CURATED.map(t=>t.id);
+
+const KEY="dac.disc01.v1";
+function blank(){return{order:CUR_ORDER.slice(),removed:[],favs:[],notes:{},links:{},chOv:{},custom:[]}}
+let S=blank();
+function load(){
+  try{const raw=localStorage.getItem(KEY);if(raw)S=sanitize(JSON.parse(raw))}catch(e){S=blank()}
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function sanitize(o){
+  const s=blank();if(!o||typeof o!=="object")return s;
+  if(Array.isArray(o.custom))s.custom=o.custom.filter(t=>t&&t.id&&t.t&&t.a).map(t=>({id:String(t.id),t:String(t.t),a:String(t.a),y:+t.y||"",lang:LANGS.includes(t.lang)?t.lang:"Hindi",style:String(t.style||"Our pick"),mood:MOODS.includes(t.mood)?t.mood:"Warm",ch:Math.min(8,Math.max(1,+t.ch||1)),kind:"M",src:String(t.src||""),note:String(t.note||""),link:String(t.link||""),check:""}));
+  const valid=new Set(CUR_ORDER.concat(s.custom.map(t=>t.id)));
+  s.removed=Array.isArray(o.removed)?o.removed.filter(id=>CUR_BY_ID[id]):[];
+  s.favs=Array.isArray(o.favs)?o.favs.filter(id=>valid.has(id)):[];
+  for(const k of["notes","links","chOv"]){if(o[k]&&typeof o[k]==="object")for(const id in o[k])if(valid.has(id))s[k][id]=k==="chOv"?Math.min(8,Math.max(1,+o[k][id]||1)):String(o[k][id])}
+  let order=Array.isArray(o.order)?o.order.filter(id=>valid.has(id)):[];
+  order=[...new Set(order)];
+  for(const id of valid)if(!order.includes(id))order.push(id);
+  s.order=order;return s;
+}
+const byId=id=>CUR_BY_ID[id]||S.custom.find(t=>t.id===id);
+const chOf=t=>S.chOv[t.id]||t.ch;
+function active(){const rm=new Set(S.removed);return S.order.filter(id=>!rm.has(id)).map(byId).filter(Boolean)}
+function ytUrl(t){
+  const l=(S.links[t.id]||t.link||"").trim();
+  if(/^https:\/\/(www\.|m\.|music\.)?(youtube\.com|youtu\.be)\//i.test(l))return{href:l,pinned:true};
+  return{href:"https://www.youtube.com/results?search_query="+encodeURIComponent(t.t+" "+t.a.replace(/ ft\. /," ")+" official"),pinned:false};
+}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const KIND={F:"Familiar",O:"Forgotten",G:"Hidden gem",M:"Ours"};
+const $=id=>document.getElementById(id);
+
+/* positions: vinyl-style A1..An / B1..Bn by chapter order */
+function positions(list){
+  const pos={};let a=0,b=0;
+  for(const c of CHAPTERS)for(const t of list)if(chOf(t)===c.n)pos[t.id]=(c.side==="A"?"A"+(++a):"B"+(++b));
+  return pos;
+}
+
+function fillSelect(el,vals,labelFn){for(const v of vals){const o=document.createElement("option");o.value=v;o.textContent=labelFn?labelFn(v):v;el.appendChild(o)}}
+function initSelects(){
+  fillSelect($("fLang"),LANGS);fillSelect($("fMood"),MOODS);
+  fillSelect($("fDecade"),["2000s","2010s","2020s"]);
+  fillSelect($("fCh"),CHAPTERS.map(c=>String(c.n)),v=>v+" · "+CHAPTERS[v-1].name);
+  fillSelect($("aLang"),LANGS);fillSelect($("aMood"),MOODS);
+  fillSelect($("aCh"),CHAPTERS.map(c=>String(c.n)),v=>v+" · "+CHAPTERS[v-1].name);
+}
+
+function filtersOn(){return!!($("q").value.trim()||$("fLang").value||$("fDecade").value||$("fMood").value||$("fCh").value||$("fKind").value||$("favOnly").getAttribute("aria-pressed")==="true"||$("skyMatch").getAttribute("aria-pressed")==="true")}
+function matches(t){
+  const q=$("q").value.trim().toLowerCase();
+  if(q&&!(t.t+" "+t.a+" "+t.src+" "+t.style).toLowerCase().includes(q))return false;
+  if($("fLang").value&&t.lang!==$("fLang").value)return false;
+  if($("fDecade").value){const d=t.y?Math.floor(t.y/10)*10+"s":"";if(d!==$("fDecade").value)return false}
+  if($("fMood").value&&t.mood!==$("fMood").value)return false;
+  if($("fCh").value&&String(chOf(t))!==$("fCh").value)return false;
+  if($("fKind").value&&t.kind!==$("fKind").value)return false;
+  if($("favOnly").getAttribute("aria-pressed")==="true"&&!S.favs.includes(t.id))return false;
+  if($("skyMatch").getAttribute("aria-pressed")==="true"&&!SKY[Sky.scene()].moods.includes(t.mood))return false;
+  return true;
+}
+
+function renderStats(list){
+  $("totalCount").textContent=list.length;
+  const count=(f)=>list.filter(f).length;
+  const langs=LANGS.map(l=>l+" "+count(t=>t.lang===l)).join(" · ");
+  $("facts").innerHTML=
+    `<div class="fact"><b>${list.length}</b><span>tracks across ${CHAPTERS.length} chapters</span></div>`+
+    `<div class="fact"><b>${count(t=>t.y>=2010&&t.y<=2019)}</b><span>from 2010–2019</span></div>`+
+    `<div class="fact"><b>${count(t=>t.kind==="O"||t.kind==="G")}</b><span>forgotten favourites and hidden gems</span></div>`+
+    `<div class="fact"><b>${S.favs.filter(id=>list.some(t=>t.id===id)).length}</b><span>marked as favourites</span></div>`+
+    `<div class="fact" style="grid-column:1/-1"><span>${langs}</span></div>`;
+}
+function renderTOC(list){
+  const html=["A","B"].map(side=>{
+    const chs=CHAPTERS.filter(c=>c.side===side);
+    return `<div class="side"><h3>Side ${side}</h3><ol>`+chs.map(c=>{
+      const n=list.filter(t=>chOf(t)===c.n).length;
+      return `<li><a href="#ch-${c.n}"><span class="no">${String(c.n).padStart(2,"0")}</span><span><span class="cn">${esc(c.name)}</span><span class="cb">${esc(c.blurb.split(". ")[0])}.</span></span><span class="cc">${n} ${n===1?"track":"tracks"}</span></a></li>`}).join("")+`</ol></div>`}).join("");
+  $("sides").innerHTML=html;
+}
+
+function trackHTML(t,pos,canMove,isFirst,isLast){
+  const yt=ytUrl(t),fav=S.favs.includes(t.id);
+  const meta=[t.y,t.lang,t.style].filter(Boolean).map(esc);
+  const chSel=CHAPTERS.map(c=>`<option value="${c.n}"${chOf(t)===c.n?" selected":""}>${c.n} · ${esc(c.name)}</option>`).join("");
+  return `<li class="track" data-id="${t.id}">
+  <span class="pos">${pos||""}</span>
+  <div style="min-width:0">
+    <div class="t-title">${esc(t.t)}</div>
+    <div class="t-artist">${esc(t.a)}</div>
+    <div class="t-meta"><span class="kind ${t.kind}">${KIND[t.kind]}</span><span>${meta.join(" · ")}</span>${t.src?`<span class="dot">${esc(t.src)}</span>`:""}<span class="chip">${esc(t.mood)}</span>${t.check?`<span class="flag" title="${esc(t.check)}">● needs a check</span>`:""}</div>
+    ${t.note?`<p class="t-note">${esc(t.note)}</p>`:""}
+    ${S.notes[t.id]?`<p class="t-note" style="font-style:normal">✎ ${esc(S.notes[t.id])}</p>`:""}
+  </div>
+  <div class="t-actions">
+    <a class="yt" href="${esc(yt.href)}" target="_blank" rel="noopener noreferrer" title="${yt.pinned?"Opens your saved YouTube link":"Opens a YouTube search for this song"}">${yt.pinned?"YouTube ↗":"Find on YouTube ↗"}</a>
+    <button class="icon" type="button" data-act="fav" aria-pressed="${fav}" aria-label="${fav?"Remove from":"Add to"} favourites: ${esc(t.t)}">${fav?"★":"☆"}</button>
+    ${canMove?`<button class="icon" type="button" data-act="up" aria-label="Move ${esc(t.t)} up"${isFirst?" disabled":""}>↑</button><button class="icon" type="button" data-act="down" aria-label="Move ${esc(t.t)} down"${isLast?" disabled":""}>↓</button>`:""}
+  </div>
+  <details class="more"><summary>Notes, link and chapter</summary>
+    <div class="more-body">
+      <div class="field"><label for="note-${t.id}">Our note</label><textarea id="note-${t.id}" data-act="note">${esc(S.notes[t.id]||"")}</textarea></div>
+      <div class="field"><label for="link-${t.id}">Pin a YouTube link</label><input id="link-${t.id}" data-act="link" type="url" placeholder="https://www.youtube.com/watch?v=…" value="${esc(S.links[t.id]||t.link||"")}">
+        <label>${t.check?esc("Check: "+t.check):"Leave empty to use a YouTube search."}</label></div>
+      <div class="field"><label for="ch-${t.id}">Chapter</label><select id="ch-${t.id}" data-act="chapter">${chSel}</select>
+        <div class="more-row" style="margin-top:8px"><button class="btn danger" type="button" data-act="remove">Remove from disc</button></div></div>
+    </div>
+  </details>
+</li>`;
+}
+
+function render(){
+  const list=active();
+  renderStats(list);renderTOC(list);
+  const pos=positions(list);const on=filtersOn();
+  let shown=0;
+  const out=CHAPTERS.map(c=>{
+    const inCh=list.filter(t=>chOf(t)===c.n);
+    const vis=inCh.filter(matches);shown+=vis.length;
+    if(on&&!vis.length)return"";
+    return `<section class="chapter" id="ch-${c.n}" aria-labelledby="cht-${c.n}">
+      <div class="ch-head"><span class="ch-num" aria-hidden="true">${c.n}</span><h2 id="cht-${c.n}">${esc(c.name)}</h2><p class="ch-blurb">Side ${c.side} · ${inCh.length} tracks · ${esc(c.blurb)}</p></div>
+      ${vis.length?`<ol class="tracks">${vis.map((t,i)=>trackHTML(t,pos[t.id],!on,i===0,i===vis.length-1)).join("")}</ol>`:`<p class="empty">No tracks in this chapter. Add one from the studio below.</p>`}
+    </section>`}).join("");
+  $("lib").innerHTML=out||`<p class="empty">Nothing matches those filters. <button class="btn" type="button" data-act="clear">Clear filters</button></p>`;
+  $("shown").textContent=on?`${shown} of ${list.length} shown · clear filters to reorder`:`${list.length} tracks`;
+  const rm=S.removed.length;
+  $("removedInfo").textContent=rm?`${rm} curated ${rm===1?"track is":"tracks are"} removed: ${S.removed.map(id=>CUR_BY_ID[id].t).join(", ")}.`:"Nothing removed yet. Removed curated tracks can always come back.";
+}
+
+let toastT;function toast(m){const el=$("toast");el.textContent=m;el.classList.add("on");clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove("on"),2200)}
+
+function move(id,dir){
+  const list=active();const t=byId(id);const c=chOf(t);
+  const same=list.filter(x=>chOf(x)===c).map(x=>x.id);
+  const i=same.indexOf(id),j=i+dir;if(j<0||j>=same.length)return;
+  const other=same[j];const a=S.order.indexOf(id),b=S.order.indexOf(other);
+  S.order[a]=other;S.order[b]=id;save();render();
+  const btn=document.querySelector(`.track[data-id="${id}"] [data-act="${dir<0?"up":"down"}"]`);
+  (btn&&!btn.disabled?btn:document.querySelector(`.track[data-id="${id}"] .yt`))?.focus();
+}
+const confirmT={};
+$("lib").addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;
+  const act=b.dataset.act;if(act==="clear"){clearFilters();return}
+  const li=b.closest(".track");if(!li)return;const id=li.dataset.id;const t=byId(id);
+  if(act==="fav"){const i=S.favs.indexOf(id);i>=0?S.favs.splice(i,1):S.favs.push(id);save();render();document.querySelector(`.track[data-id="${id}"] [data-act="fav"]`)?.focus();toast(i>=0?"Removed from favourites":"Added to favourites")}
+  else if(act==="up")move(id,-1);
+  else if(act==="down")move(id,1);
+  else if(act==="remove"){
+    if(!confirmT[id]){b.textContent="Tap again to remove";confirmT[id]=setTimeout(()=>{delete confirmT[id];b.textContent="Remove from disc"},3500);return}
+    clearTimeout(confirmT[id]);delete confirmT[id];
+    if(t.kind==="M"){S.custom=S.custom.filter(x=>x.id!==id);S.order=S.order.filter(x=>x!==id)}else S.removed.push(id);
+    S.favs=S.favs.filter(x=>x!==id);save();render();toast(`Removed “${t.t}”`);
+  }
+});
+let noteT;
+$("lib").addEventListener("input",e=>{
+  const el=e.target;const li=el.closest(".track");if(!li)return;const id=li.dataset.id;
+  if(el.dataset.act==="note"){S.notes[id]=el.value;if(!el.value)delete S.notes[id];clearTimeout(noteT);noteT=setTimeout(save,300)}
+});
+$("lib").addEventListener("change",e=>{
+  const el=e.target;const li=el.closest(".track");if(!li)return;const id=li.dataset.id;
+  if(el.dataset.act==="note"){save();render();toast("Note saved")}
+  if(el.dataset.act==="link"){const v=el.value.trim();if(v&&!/^https:\/\/(www\.|m\.|music\.)?(youtube\.com|youtu\.be)\//i.test(v)){toast("Use a youtube.com or youtu.be link");return}
+    if(v)S.links[id]=v;else delete S.links[id];save();render();toast(v?"YouTube link pinned":"Back to YouTube search")}
+  if(el.dataset.act==="chapter"){const n=+el.value,t=byId(id);if(n===t.ch)delete S.chOv[id];else S.chOv[id]=n;save();render();toast(`Moved to ${CHAPTERS[n-1].name}`)}
+});
+
+["q","fLang","fDecade","fMood","fCh","fKind"].forEach(id=>$(id).addEventListener(id==="q"?"input":"change",render));
+$("favOnly").addEventListener("click",function(){this.setAttribute("aria-pressed",this.getAttribute("aria-pressed")==="true"?"false":"true");render()});
+function clearFilters(){$("q").value="";["fLang","fDecade","fMood","fCh","fKind"].forEach(id=>$(id).value="");$("favOnly").setAttribute("aria-pressed","false");$("skyMatch").setAttribute("aria-pressed","false");render()}
+$("clearF").addEventListener("click",clearFilters);
+$("filterToggle").addEventListener("click",function(){const f=$("filters");const open=f.dataset.collapsed==="true";f.dataset.collapsed=open?"false":"true";this.setAttribute("aria-expanded",String(open))});
+$("needle").addEventListener("click",function(){const d=$("disc");const p=d.classList.toggle("paused");this.setAttribute("aria-pressed",String(p));this.textContent=p?"Drop needle":"Lift needle"});
+
+$("addForm").addEventListener("submit",e=>{
+  e.preventDefault();const t=$("aTitle").value.trim(),a=$("aArtist").value.trim(),link=$("aLink").value.trim();
+  if(!t||!a){$("addMsg").textContent="Add a title and an artist.";return}
+  if(link&&!/^https:\/\/(www\.|m\.|music\.)?(youtube\.com|youtu\.be)\//i.test(link)){$("addMsg").textContent="Use a youtube.com or youtu.be link.";return}
+  const y=+$("aYear").value;
+  const tr={id:"u"+Date.now().toString(36),t,a,y:y||"",lang:$("aLang").value,style:"Our pick",mood:$("aMood").value,ch:+$("aCh").value,kind:"M",src:"",note:$("aNote").value.trim(),link,check:""};
+  S.custom.push(tr);
+  const list=active();const lastInCh=[...list].reverse().find(x=>chOf(x)===tr.ch);
+  if(lastInCh)S.order.splice(S.order.indexOf(lastInCh.id)+1,0,tr.id);else S.order.push(tr.id);
+  save();e.target.reset();$("addMsg").textContent="";clearFilters();toast(`Added “${t}” to ${CHAPTERS[tr.ch-1].name}`);
+  document.querySelector(`.track[data-id="${tr.id}"]`)?.scrollIntoView?.({block:"center"});
+});
+
+function exportData(){return JSON.stringify({app:"dill-aur-chill",disc:"01",version:1,exportedAt:new Date().toISOString(),state:S,tracklist:active().map(t=>({t:t.t,a:t.a,y:t.y,lang:t.lang,chapter:CHAPTERS[chOf(t)-1].name,link:ytUrl(t).href}))},null,2)}
+$("exportBtn").addEventListener("click",()=>{$("exportBox").value=exportData();toast("Export ready")});
+$("copyBtn").addEventListener("click",()=>{
+  const box=$("exportBox");if(!box.value)box.value=exportData();
+  const fallback=()=>{box.focus();box.select();toast("Selected. Press Ctrl/Cmd+C to copy")};
+  try{navigator.clipboard.writeText(box.value).then(()=>toast("Copied to clipboard"),fallback)}catch(err){fallback()}
+});
+$("importFile").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$("importBox").value=String(r.result);toast("File loaded. Press Import")};r.readAsText(f)});
+$("importBtn").addEventListener("click",()=>{
+  let o;try{o=JSON.parse($("importBox").value)}catch(err){toast("That isn't valid JSON");return}
+  const st=o&&o.app==="dill-aur-chill"?o.state:o;
+  if(!st||!Array.isArray(st.order)){toast("No Dill Aur Chill data found in that text");return}
+  S=sanitize(st);save();clearFilters();$("importBox").value="";toast("Imported");
+});
+$("restoreBtn").addEventListener("click",()=>{const n=S.removed.length;S.removed=[];save();render();toast(n?`Restored ${n} ${n===1?"track":"tracks"}`:"Nothing to restore")});
+$("orderBtn").addEventListener("click",()=>{const customs=S.order.filter(id=>!CUR_BY_ID[id]);S.order=CUR_ORDER.concat(customs);S.chOv={};save();render();toast("Curated order restored")});
+let resetArmed;
+$("resetBtn").addEventListener("click",function(){
+  if(!resetArmed){this.textContent="Tap again: erase all changes";resetArmed=setTimeout(()=>{resetArmed=null;this.textContent="Reset everything"},3500);return}
+  clearTimeout(resetArmed);resetArmed=null;this.textContent="Reset everything";S=blank();save();clearFilters();toast("Back to the original disc");
+});
+
+
+/* ---------- Sky: hazy sun, cozy rain, moon and stars ---------- */
+const SKY={
+ sun:{label:"Hazy sun",moods:["Warm","Playful","Euphoric","Nostalgic"],ch:1,line:"Hazy and golden out there. Start with the windows down.",top:"#f7dcae",mid:"#f2c39b",bot:"#eeb8a8"},
+ rain:{label:"Rain",moods:["Cozy","Bittersweet","Romantic"],ch:4,line:"Rain on the glass. Chai, a blanket and the slow ones.",top:"#7f8d9b",mid:"#a3adb7",bot:"#c8cdd2"},
+ moon:{label:"Moon",moods:["Late-night","Soulful","Dreamy"],ch:8,line:"The moon is up. Lights low, straight to After Hours.",top:"#0c1636",mid:"#1b2654",bot:"#33407a"},
+ stars:{label:"Stars",moods:["Devotional","Dreamy","Soulful","Late-night"],ch:8,line:"Clear sky, every star out. Let the night end beautifully.",top:"#04050d",mid:"#0f0c26",bot:"#241a48"},
+ night:{label:"Moon and stars",moods:["Late-night","Soulful","Dreamy","Devotional"],ch:8,line:"Moon and stars out. Lights low, straight to After Hours.",top:"#060a20",mid:"#141640",bot:"#2a1f55"}
+};
+const SKYKEY="dac.sky";
+const Sky=(function(){
+  const band=document.querySelector(".sky"),cv=$("skyCanvas");
+  const ctx=cv&&cv.getContext?cv.getContext("2d"):null;
+  const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W=0,H=0,cur="sun",prev=null,blend0=0,raf=0,visible=true,P={};
+  const R=(a,b)=>a+Math.random()*(b-a);
+  function build(){
+    P.stars=Array.from({length:280},()=>({x:Math.random(),y:Math.pow(Math.random(),1.3)*.92,r:R(.4,1.5),ph:R(0,6.3),sp:R(.0006,.0022)}));
+    P.motes=Array.from({length:46},()=>({x:Math.random(),y:Math.random(),r:R(.6,2.2),v:R(.4,1.4),ph:R(0,6.3)}));
+    P.haze=Array.from({length:6},()=>({x:Math.random(),y:R(.15,.95),r:R(.18,.42),sp:R(.00006,.00016),ph:R(0,6.3)}));
+    P.rain=Array.from({length:Math.round(140+W/6)},()=>({x:Math.random()*1.2,y:Math.random(),l:R(10,26),v:R(.7,1.3)}));
+    P.glass=Array.from({length:16},()=>({x:Math.random(),y:Math.random(),r:R(2,6),v:R(.01,.05)}));
+    P.cloud=Array.from({length:5},()=>({x:Math.random(),y:R(.05,.5),w:R(.25,.5),h:R(.03,.07),sp:R(.004,.012)}));
+    P.shoot={next:performance.now()+R(2500,6000),t0:0,x:0,y:0};
+  }
+  function resize(){
+    if(!ctx)return;const r=cv.getBoundingClientRect();const dpr=Math.min(2,window.devicePixelRatio||1);
+    W=Math.max(1,r.width);H=Math.max(1,r.height);cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();paint(performance.now());
+  }
+  function bg(c){const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,c.top);g.addColorStop(.55,c.mid);g.addColorStop(1,c.bot);ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  function glow(x,y,r,stops){const g=ctx.createRadialGradient(x,y,0,x,y,r);stops.forEach(s=>g.addColorStop(s[0],s[1]));ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  function sun(t){
+    const sx=W*.82,sy=H*.18,m=Math.max(W,H);
+    glow(sx,sy,m*.7,[[0,"rgba(255,246,220,.95)"],[.07,"rgba(255,230,184,.8)"],[.28,"rgba(255,208,152,.3)"],[1,"rgba(255,200,150,0)"]]);
+    for(const h of P.haze){const x=h.x*W+Math.sin(t*h.sp+h.ph)*W*.1,y=h.y*H,r=h.r*m;const g=ctx.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,"rgba(255,238,218,.24)");g.addColorStop(1,"rgba(255,238,218,0)");ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill()}
+    for(const p of P.motes){const y=((p.y*H-t*p.v*.012)%H+H)%H,x=p.x*W+Math.sin(t*.0006+p.ph)*14,a=.22+.22*Math.sin(t*.002+p.ph);ctx.fillStyle="rgba(255,251,238,"+a.toFixed(3)+")";ctx.beginPath();ctx.arc(x,y,p.r,0,7);ctx.fill()}
+  }
+  function rain(t){
+    for(const c of P.cloud){const w=c.w*W,x=((c.x*W+t*c.sp*.02)%(W+w))-w*.5,y=c.y*H*.6;const g=ctx.createRadialGradient(x,y,0,x,y,w);g.addColorStop(0,"rgba(72,82,94,.28)");g.addColorStop(1,"rgba(72,82,94,0)");ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,y,w,w*.35,0,0,7);ctx.fill()}
+    ctx.strokeStyle="rgba(242,246,250,.34)";ctx.lineWidth=1;ctx.beginPath();
+    for(const d of P.rain){const y=((d.y*(H+60)+t*d.v*.55)%(H+60))-30,x=d.x*W-y*.14;ctx.moveTo(x,y);ctx.lineTo(x+d.l*.14,y-d.l)}
+    ctx.stroke();
+    for(const g of P.glass){const y=((g.y*H+t*g.v*.02)%(H+20))-10,x=g.x*W;const gr=ctx.createRadialGradient(x-g.r*.3,y-g.r*.3,0,x,y,g.r);gr.addColorStop(0,"rgba(255,255,255,.4)");gr.addColorStop(1,"rgba(255,255,255,.06)");ctx.fillStyle=gr;ctx.beginPath();ctx.arc(x,y,g.r,0,7);ctx.fill()}
+  }
+  function stars(t,n,mul){
+    for(let i=0;i<n&&i<P.stars.length;i++){const s=P.stars[i];const a=(.3+.7*Math.abs(Math.sin(t*s.sp+s.ph)))*mul;ctx.fillStyle="rgba(255,252,240,"+a.toFixed(3)+")";ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,7);ctx.fill()}
+  }
+  function milky(){ctx.save();ctx.translate(W*.45,H*.45);ctx.rotate(-.42);ctx.scale(1,.16);const r=Math.max(W,H)*.7;const g=ctx.createRadialGradient(0,0,0,0,0,r);g.addColorStop(0,"rgba(196,176,255,.11)");g.addColorStop(1,"rgba(196,176,255,0)");ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,r,0,7);ctx.fill();ctx.restore()}
+  function shooting(now){
+    const s=P.shoot;if(reduce)return;
+    if(!s.t0&&now>s.next){s.t0=now;s.x=R(.2,.8)*W;s.y=R(.05,.35)*H}
+    if(s.t0){const k=(now-s.t0)/900;if(k>1){s.t0=0;s.next=now+R(5000,11000);return}
+      const len=120,x=s.x+k*240,y=s.y+k*110;const g=ctx.createLinearGradient(x,y,x-len,y-len*.46);g.addColorStop(0,"rgba(255,255,255,"+(1-k).toFixed(2)+")");g.addColorStop(1,"rgba(255,255,255,0)");ctx.strokeStyle=g;ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-len,y-len*.46);ctx.stroke()}
+  }
+  function moon(t){
+    const r=Math.max(26,Math.min(W,H)*.075),mx=W*.82,my=H*.22;
+    glow(mx,my,r*7,[[0,"rgba(226,230,255,.42)"],[.2,"rgba(200,210,255,.14)"],[1,"rgba(200,210,255,0)"]]);
+    ctx.fillStyle="#f5f1e2";ctx.beginPath();ctx.arc(mx,my,r,0,7);ctx.fill();
+    ctx.fillStyle="rgba(186,180,160,.35)";[[-.3,-.2,.22],[.25,.15,.16],[-.05,.35,.12],[.32,-.35,.1]].forEach(c=>{ctx.beginPath();ctx.arc(mx+c[0]*r,my+c[1]*r,c[2]*r,0,7);ctx.fill()});
+    for(const c of P.cloud){const w=c.w*W,x=((c.x*W+t*c.sp*.01)%(W+w*2))-w,y=my+(c.y-.25)*H*.5;ctx.fillStyle="rgba(205,214,255,.06)";ctx.beginPath();ctx.ellipse(x,y,w,c.h*H,0,0,7);ctx.fill()}
+  }
+  function draw(name,t,now){
+    bg(SKY[name]);
+    if(name==="sun")sun(t);else if(name==="rain")rain(t);
+    else if(name==="moon"){stars(t,70,.55);moon(t)}
+    else if(name==="stars"){milky();stars(t,280,1);shooting(now)}
+    else{milky();stars(t,180,.9);moon(t);shooting(now)}
+  }
+  function paint(now){
+    if(!ctx)return;const t=reduce?24000:now;ctx.globalAlpha=1;
+    if(prev&&now-blend0<900){draw(prev,t,now);ctx.globalAlpha=(now-blend0)/900;draw(cur,t,now);ctx.globalAlpha=1}
+    else{prev=null;draw(cur,t,now)}
+  }
+  function tick(now){raf=0;paint(now);if(!reduce&&visible&&!document.hidden)loop()}
+  function loop(){if(!raf&&ctx)raf=requestAnimationFrame(tick)}
+  function set(name){
+    if(!SKY[name])name="sun";
+    if(name!==cur){prev=reduce?null:cur;cur=name;blend0=performance.now()}
+    band.dataset.sky=name;
+    if(reduce)paint(performance.now());else loop();
+  }
+  if(ctx){
+    window.addEventListener("resize",()=>{clearTimeout(resize.t);resize.t=setTimeout(resize,120)});
+    if("IntersectionObserver" in window)new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible)loop()}).observe(band);
+    document.addEventListener("visibilitychange",()=>{if(!document.hidden)loop()});
+    resize();
+  }
+  return{set,scene:()=>cur};
+})();
+let skyMode="auto";
+try{const m=localStorage.getItem(SKYKEY);if(m&&(m==="auto"||SKY[m]))skyMode=m}catch(e){}
+function resolveSky(){if(skyMode!=="auto")return skyMode;const h=new Date().getHours();return h>=6&&h<18?"sun":"night"}
+function applySky(){
+  const s=resolveSky();Sky.set(s);const d=SKY[s];
+  document.querySelectorAll("#skySeg button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.sky===skyMode)));
+  const time=new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+  $("skyCap").textContent=skyMode==="auto"?`Auto · ${time} · ${d.label.toLowerCase()}. Pouring outside? Tap Rain; this page can't read the weather.`:`${d.label}, set by you. Auto follows your clock.`;
+  $("dropLine").textContent=d.line;
+  const ch=CHAPTERS[d.ch-1];$("dropGo").href="#ch-"+ch.n;$("dropGo").textContent=`Start at ${ch.name} ↓`;
+  $("dropMatch").textContent=`Songs for the ${s==="night"?"night":d.label.toLowerCase()}`;
+  if($("skyMatch").getAttribute("aria-pressed")==="true")render();
+}
+$("skySeg").addEventListener("click",e=>{const b=e.target.closest("button[data-sky]");if(!b)return;skyMode=b.dataset.sky;try{localStorage.setItem(SKYKEY,skyMode)}catch(err){}applySky()});
+$("dropMatch").addEventListener("click",()=>{$("skyMatch").setAttribute("aria-pressed","true");render();document.getElementById("library").scrollIntoView?.({behavior:"smooth"})});
+$("skyMatch").addEventListener("click",function(){this.setAttribute("aria-pressed",this.getAttribute("aria-pressed")==="true"?"false":"true");render()});
+setInterval(()=>{if(skyMode==="auto")applySky()},60000);
+
+initSelects();load();render();applySky();
+if(location.hash&&/^#ch-\d$/.test(location.hash))setTimeout(()=>document.querySelector(location.hash)?.scrollIntoView?.(),50);
+})();
+</script>
+</body></html>
